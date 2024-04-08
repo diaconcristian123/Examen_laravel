@@ -6,7 +6,7 @@ use App\Http\Controllers\RecipeController;
 
 Route::get('/', function () {
     return view('recipes.index', ['recipes' => Recipe::all()]);
-});
+})->name('recipes.index');
 
 Route::get('/recipes/create', [RecipeController::class, 'create'])->name('recipes.create');
 Route::post('/recipes', [RecipeController::class, 'store'])->name('recipes.store');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Recipe;
 
 class RecipeController extends Controller
 {
@@ -20,15 +21,15 @@ class RecipeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|max:255',
+            'title' => 'required',
             'description' => 'required',
             'ingredients' => 'required',
             'instructions' => 'required',
         ]);
 
-        RecipeController::create($request->all());
+        Recipe::create($request->all());
 
-        return redirect()->route('recipes.create')
+        return redirect()->route('recipes.index')
                         ->with('success','Recipe created successfully.');
     }
 
